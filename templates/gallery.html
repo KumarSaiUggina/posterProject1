@@ -8,7 +8,7 @@
       /* General styling */
       body {
         font-family: Arial, sans-serif;
-        background-image: url("{{ url_for('static', filename='inside.jpeg') }}");
+        background-image: url("../static/inside.jpeg.jpg");
         background-size: cover; /* Ensures the background image covers the entire page */
         background-position: center; /* Centers the background image */
         background-attachment: fixed; /* Keeps the background fixed while scrolling */
@@ -125,7 +125,7 @@
   </head>
   <body>
     <div class="logo-container">
-      <img src="../static/inside.jpeg.jpg" alt="Logo" class="logo" />
+      <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
     </div>
 
     <h1>Welcome {{ user_name }} !</h1>
