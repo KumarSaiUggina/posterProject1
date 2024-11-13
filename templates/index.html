@@ -26,6 +26,7 @@
       .header .logo {
         width: 150px;
         height: auto;
+        max-width: 90%; /* Ensures the logo scales on small screens */
         margin-bottom: 10px;
       }
       .header h1 {
@@ -93,17 +94,17 @@
       /* Responsive Styles */
       @media (max-width: 600px) {
         .header .logo {
-          width: 120px; /* Reduce logo size on smaller screens */
+          width: 100px; /* Smaller logo size on mobile */
         }
         .header h1 {
-          font-size: 24px; /* Smaller title text */
+          font-size: 20px; /* Smaller title text */
         }
         .container {
           width: 90%; /* Make container width responsive */
           padding: 15px;
         }
         .container h1 {
-          font-size: 20px;
+          font-size: 18px;
         }
         button {
           padding: 12px;
