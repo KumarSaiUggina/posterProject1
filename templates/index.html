@@ -141,13 +141,10 @@
       <h1>Email Verification</h1>
 
       <!-- Display Flash Messages -->
-      {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-      {% for category, message in messages %}
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
       <div class="flash-message {{ category }}">{{ message }}</div>
-      {% endfor %}
-      {% endif %}
-      {% endwith %}
+      {% endfor %} {% endif %} {% endwith %}
 
       <!-- Email Form -->
       <form action="{{ url_for('verify_email') }}" method="POST">
@@ -163,7 +160,9 @@
 
     <!-- Footer -->
     <footer>
-      <p>Developed by <strong>Mahesh</strong> and <strong>Satheesh</strong> IV DS</p>
+      <p>
+        Developed by <strong>Mahesh</strong> and <strong>Sateesh</strong> IV DS
+      </p>
     </footer>
   </body>
 </html>

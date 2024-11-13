@@ -9,21 +9,29 @@
       body {
         font-family: Arial, sans-serif;
         background-image: url("../static/inside.jpeg.jpg");
-        background-size: cover; /* Ensures the background image covers the entire page */
-        background-position: center; /* Centers the background image */
-        background-attachment: fixed; /* Keeps the background fixed while scrolling */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0;
         padding: 0;
-        min-height: 100vh; /* Ensure body takes full viewport height */
+        min-height: 100vh;
       }
 
-      .logo-container {
+      /* Header styling */
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
         position: absolute;
-        top: 10px;
-        left: 10px;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
       }
 
       .logo {
@@ -33,19 +41,20 @@
 
       h1,
       h2 {
-        margin: 5px 0; /* Reduce gap between headers */
-        text-align: center;
-        font-size: 1.5em; /* Adjust font size if needed */
+        margin: 5px 0;
+        font-size: 1.5em;
       }
 
+      /* Photo Gallery */
       .photo-gallery {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
-        margin-top: 20px; /* Add some space from top */
-        margin-bottom: 50px; /* Space before footer */
-        flex-grow: 1; /* Ensure gallery expands to take remaining space */
+        margin-top: 120px;
+        margin-bottom: 50px;
+        flex-grow: 1;
+        padding: 10px;
       }
 
       .photo-item {
@@ -112,7 +121,48 @@
         color: #555;
         text-align: center;
         font-weight: bold;
-        margin-top: auto; /* Pushes the footer to the bottom */
+        margin-top: auto;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        /* Logo and Header text */
+        .logo {
+          width: 80px;
+        }
+        h1,
+        h2 {
+          font-size: 1.2em;
+        }
+        .header {
+          top: 5%;
+          padding: 10px;
+        }
+        .photo-gallery {
+          padding: 5px;
+        }
+        .photo-item img {
+          width: 130px;
+          height: 130px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* Logo and Header text for small screens */
+        .logo {
+          width: 70px;
+        }
+        h1,
+        h2 {
+          font-size: 1em;
+        }
+        .photo-gallery {
+          margin-top: 100px;
+        }
+        .photo-item img {
+          width: 120px;
+          height: 120px;
+        }
       }
     </style>
     <script>
@@ -124,12 +174,13 @@
     </script>
   </head>
   <body>
-    <div class="logo-container">
-      <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
+    <div class="header">
+      <div class="logo-container">
+        <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
+      </div>
+      <h1>Welcome {{ user_name }}!</h1>
+      <h2>Vote for Your Favorite Photo</h2>
     </div>
-
-    <h1>Welcome {{ user_name }} !</h1>
-    <h2>Vote for Your Favorite Photo</h2>
 
     <div class="photo-gallery">
       {% for photo in photos %}
@@ -144,29 +195,17 @@
           alt="Photo {{ photo.image_number }}"
         />
         <form action="{{ url_for('vote') }}" method="POST" class="vote-form">
-          <!-- Include email and image ID as hidden inputs -->
           <input type="hidden" name="image_id" value="{{ photo._id }}" />
           <input type="hidden" name="email" value="{{ user_email }}" />
-          <button type="submit" class="vote-button">
-            Vote for this Picture
-          </button>
+          <button type="submit" class="vote-button">Vote for this Picture</button>
         </form>
       </div>
       {% endfor %}
     </div>
 
-    <footer
-      style="
-        text-align: center;
-        padding:0%;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #f8f9fa;
-      "
-    >
+    <footer>
       <p>
-        Developed by <strong>Mahesh</strong> and <strong>Satheesh</strong> IV DS
+        Developed by <strong>Mahesh</strong> and <strong>Sateesh</strong> IV DS
       </p>
     </footer>
   </body>
