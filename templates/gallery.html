@@ -1,24 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
     <style>
         /* General styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: #210d0d;
+            background-image: url("{{ url_for('static', filename='inside.jpeg') }}");
+            background-size: cover; /* Ensures the background image covers the entire page */
+            background-position: center; /* Centers the background image */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 0;
             padding: 0;
+            min-height: 100vh; /* Ensure body takes full viewport height */
         }
 
-        h1 {
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .logo {
+            width: 90px; /* Adjust the size as desired */
+            height: auto;
+        }
+
+        h1, h2 {
+            margin: 5px 0; /* Reduce gap between headers */
             text-align: center;
-            margin: 20px 0;
-            font-size: 2rem;
+            font-size: 1.5em; /* Adjust font size if needed */
         }
 
         .photo-gallery {
@@ -26,6 +43,9 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
+            margin-top: 20px; /* Add some space from top */
+            margin-bottom: 50px; /* Space before footer */
+            flex-grow: 1; /* Ensure gallery expands to take remaining space */
         }
 
         .photo-item {
@@ -82,54 +102,52 @@
         .photo-item.expanded .vote-button {
             display: inline-block;
         }
+
+        /* Footer styling */
+        footer {
+            width: 100%;
+            padding: 10px;
+            background-color: #f4f4f4;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            font-weight: bold;
+            margin-top: auto; /* Pushes the footer to the bottom */
+        }
     </style>
+    <script>
+        // Function to toggle expansion of photo
+        function expandImage(photoId) {
+            const photoItem = document.getElementById(`photo-${photoId}`);
+            photoItem.classList.toggle("expanded");
+        }
+    </script>
 </head>
 <body>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="Logo" class="logo">
+    </div>
+    
+    <h1>Welcome {{ user_name }} !</h1>
+    <h2>Vote for Your Favorite Photo</h2>
 
-<h1>Welcome, {{ user_name }}</h1>
-<h2>Vote for your favorite photo</h2>
+    <div class="photo-gallery">
+        {% for photo in photos %}
+            <div class="photo-item" id="photo-{{ photo._id }}" onclick="expandImage('{{ photo._id }}')">
+                <p>Photo Number: {{ photo.image_number }}</p>
+                <img src="data:image/jpeg;base64,{{ photo.image }}" alt="Photo {{ photo.image_number }}">
+                <form action="{{ url_for('vote') }}" method="POST" class="vote-form">
+                    <!-- Include email and image ID as hidden inputs -->
+                    <input type="hidden" name="image_id" value="{{ photo._id }}">
+                    <input type="hidden" name="email" value="{{ user_email }}">
+                    <button type="submit" class="vote-button">Vote for this Picture</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
 
-<div class="photo-gallery">
-    {% for photo in photos %}
-        <div class="photo-item" id="photo-{{ photo._id }}" onclick="expandImage('{{ photo._id }}')">
-            <p>Photo Number: {{ photo.image_number }}</p>
-            <img src="data:image/jpeg;base64,{{ photo.image }}" alt="Photo {{ photo.image_number }}">
-            <form action="{{ url_for('vote') }}" method="POST" class="vote-form">
-                <!-- Include email and image ID as hidden inputs -->
-                <input type="hidden" name="image_id" value="{{ photo._id }}">
-                <input type="hidden" name="email" value="{{ user_email }}"> <!-- Add the email field here -->
-                <button type="submit" class="vote-button">Vote for this picture</button>
-            </form>
-        </div>
-    {% endfor %}
-</div>
-
-<script>
-    function expandImage(imageId) {
-        // Collapse all expanded images first
-        const allPhotoItems = document.querySelectorAll('.photo-item');
-        allPhotoItems.forEach(item => {
-            if (item.id !== `photo-${imageId}`) {
-                item.classList.remove('expanded');
-            }
-        });
-        
-        // Toggle expand on the clicked image
-        const photoItem = document.getElementById(`photo-${imageId}`);
-        photoItem.classList.toggle('expanded');
-    }
-</script>
-<footer
-      style="
-        text-align: center;
-        padding: 1em;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #f8f9fa;
-      "
-    >
-      Developed by Mahesh and Sateesh
+    <footer>
+        <p>Developed by <strong>Mahesh</strong> and <strong>Satheesh</strong> IV DS</p>
     </footer>
 </body>
 </html>
