@@ -23,7 +23,7 @@
       .header .logo {
         width: 60px;
         height: auto;
-        margin-right: 20px;
+        margin-right: 15px;
       }
       .header h1 {
         font-size: 24px;
@@ -31,7 +31,7 @@
         color: #333;
       }
       .container {
-        max-width: 400px;
+        max-width: 350px;
         margin: 20px auto;
         background-color: #f6f6fb;
         padding: 20px;
@@ -45,7 +45,7 @@
       }
       input[type="email"] {
         width: 100%;
-        padding: 10px;
+        padding: 8px 10px; /* Adjusted padding for mobile */
         margin: 10px 0;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -93,33 +93,31 @@
       /* Responsive Styles */
       @media (max-width: 600px) {
         .header {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
+          justify-content: flex-start;
+          padding: 15px;
         }
         .header .logo {
-          width: 40px; /* Smaller logo size on mobile */
-          margin: 0 auto 10px;
+          width: 50px; /* Smaller logo on mobile */
         }
         .header h1 {
           font-size: 20px; /* Smaller title text */
         }
         .container {
-          width: 90%; /* Make container width responsive */
+          max-width: 90%;
           padding: 15px;
         }
         .container h1 {
-          font-size: 20px; /* Slightly smaller font for mobile */
+          font-size: 20px;
         }
         input[type="email"] {
-          padding: 8px; /* Adjust padding on input for mobile */
+          padding: 8px; /* Refined padding for input on mobile */
         }
         button {
-          padding: 12px;
-          font-size: 14px; /* Adjust button font size */
+          padding: 10px;
+          font-size: 14px;
         }
         footer {
-          font-size: 12px; /* Slightly smaller footer text */
+          font-size: 12px;
         }
       }
     </style>
