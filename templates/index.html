@@ -2,10 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Email Verification</title>
     <style>
-      /* Base Styles */
       body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -17,20 +15,17 @@
       }
       .header {
         display: flex;
-        flex-direction: column;
         align-items: center;
         padding: 20px;
-        background-color: rgba(255, 255, 255, 0.8);
-        text-align: center;
+        background-color: rgba(255, 255, 255, 0.8); /* Light background for header */
       }
       .header .logo {
-        width: 150px;
+        width: 60px; /* Adjust logo size */
         height: auto;
-        max-width: 90%; /* Ensures the logo scales on small screens */
-        margin-bottom: 10px;
+        margin-right: 20px;
       }
       .header h1 {
-        font-size: 28px;
+        font-size: 24px;
         margin: 0;
         color: #333;
       }
@@ -88,36 +83,15 @@
         text-align: center;
         background-color: #f8f9fa;
         padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
         font-size: 14px;
-      }
-
-      /* Responsive Styles */
-      @media (max-width: 600px) {
-        .header .logo {
-          width: 100px; /* Smaller logo size on mobile */
-        }
-        .header h1 {
-          font-size: 20px; /* Smaller title text */
-        }
-        .container {
-          width: 90%; /* Make container width responsive */
-          padding: 15px;
-        }
-        .container h1 {
-          font-size: 18px;
-        }
-        button {
-          padding: 12px;
-          font-size: 14px; /* Adjust button font size */
-        }
-        footer {
-          font-size: 13px; /* Slightly smaller footer text */
-        }
       }
     </style>
   </head>
   <body>
-    <!-- Header with Logo and Centered Title -->
+    <!-- Header with Logo and Title -->
     <header class="header">
       <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
       <h1>Data Science Photography Competition</h1>
