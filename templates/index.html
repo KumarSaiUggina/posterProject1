@@ -1,106 +1,117 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Email Verification</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 50px;
-            background-image: url("{{ url_for('static', filename='peg1.jpg') }}");
-            background-size: cover; /* This will make sure the background image covers the entire body */
-            background-position: center; /* This will center the background image */
-            background-attachment: fixed; /* This will keep the background fixed when scrolling */
-        }
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .flash-message {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        .flash-message.success {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        .flash-message.warning {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-        .flash-message.error {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 90px;  /* You can adjust the width */
-            height: auto;
-        }
-        
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 50px;
+        background-image: url("{{ url_for('static', filename='peg1.jpg') }}");
+        background-size: cover; /* This will make sure the background image covers the entire body */
+        background-position: center; /* This will center the background image */
+        background-attachment: fixed; /* This will keep the background fixed when scrolling */
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .flash-message {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .flash-message.success {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      .flash-message.warning {
+        background-color: #fff3cd;
+        color: #856404;
+      }
+      .flash-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+      .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 150px; /* You can adjust the width */
+        height: auto;
+      }
     </style>
-</head>
-<body>
-    <img src="../static/logo_transparent.png" alt="Logo" class="logo">
+  </head>
+  <body>
+    <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
     <center><h1>Data Science Photography Competition !</h1></center>
-<div class="container">
-    <h1>Email Verification</h1>
+    <div class="container">
+      <h1>Email Verification</h1>
 
-    <!-- Display Flash Messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="flash-message {{ category }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+      <!-- Display Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="flash-message {{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
 
-    <!-- Email Form -->
-    <form action="{{ url_for('verify_email') }}" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required>
+      <!-- Email Form -->
+      <form action="{{ url_for('verify_email') }}" method="POST">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
         <button type="submit">Verify</button>
-    </form>
-</div>
-<!-- Footer -->
-<footer style="position: absolute; bottom: 0; width: 100%; margin-top: 20px; padding: 10px; background-color: #f4f4f4; font-size: 14px; color: #555; text-align: center;">
-    <p>Developed by <strong>Mahesh</strong> and <strong>Satheesh</strong> IV DS</p>
-</footer>
-
-</body>
+      </form>
+    </div>
+    <!-- Footer -->
+    <footer
+      style="
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f4f4f4;
+        font-size: 14px;
+        color: #555;
+        text-align: center;
+      "
+    >
+      <p>
+        Developed by <strong>Mahesh</strong> and <strong>Satheesh</strong> IV DS
+      </p>
+    </footer>
+  </body>
 </html>
