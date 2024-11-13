@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Email Verification</title>
     <style>
       body {
@@ -17,10 +18,10 @@
         display: flex;
         align-items: center;
         padding: 20px;
-        background-color: rgba(255, 255, 255, 0.8); /* Light background for header */
+        background-color: rgba(255, 255, 255, 0.8);
       }
       .header .logo {
-        width: 60px; /* Adjust logo size */
+        width: 60px;
         height: auto;
         margin-right: 20px;
       }
@@ -87,6 +88,39 @@
         bottom: 0;
         width: 100%;
         font-size: 14px;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 600px) {
+        .header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .header .logo {
+          width: 40px; /* Smaller logo size on mobile */
+          margin: 0 auto 10px;
+        }
+        .header h1 {
+          font-size: 20px; /* Smaller title text */
+        }
+        .container {
+          width: 90%; /* Make container width responsive */
+          padding: 15px;
+        }
+        .container h1 {
+          font-size: 20px; /* Slightly smaller font for mobile */
+        }
+        input[type="email"] {
+          padding: 8px; /* Adjust padding on input for mobile */
+        }
+        button {
+          padding: 12px;
+          font-size: 14px; /* Adjust button font size */
+        }
+        footer {
+          font-size: 12px; /* Slightly smaller footer text */
+        }
       }
     </style>
   </head>
