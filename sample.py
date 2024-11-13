@@ -7,8 +7,8 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # MongoDB connection
-client = MongoClient("mongodb+srv://kattamanchimaheshreddy1414:SSMB29@cluster0.xexe6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-db = client['competition_db2']
+client = MongoClient("mongodb+srv://tiger:tigersateesh@cluster0.0ggj59e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+db = client['competition_db5']
 photos_collection = db['photos']
 votes_collection = db['votes']
 emails_collection = db['emails']
