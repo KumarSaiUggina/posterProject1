@@ -23,8 +23,8 @@
       /* Header Styling */
       header {
         width: 100%;
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        background-color: white; /* White background for the header */
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -32,6 +32,7 @@
         top: 0;
         left: 0;
         right: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 1000;
       }
 
@@ -45,10 +46,14 @@
         height: auto;
       }
 
+      .header-text {
+        color: black;
+        text-align: right;
+      }
+
       h1,
       h2 {
         margin: 0;
-        color: white;
         font-size: 1.2em;
         text-align: center;
       }
@@ -142,17 +147,22 @@
         header {
           flex-direction: column;
           text-align: center;
+          padding: 15px;
         }
 
         .logo {
           width: 70px;
         }
 
-        .content h1 {
+        .header-text {
+          text-align: center;
+        }
+
+        h1 {
           font-size: 1.4em;
         }
 
-        .content h2 {
+        h2 {
           font-size: 1.1em;
         }
 
@@ -209,7 +219,7 @@
         Developed by <strong>Mahesh</strong> and <strong>Sateesh</strong> IV DS
       </p>
     </footer>
-    
+
     <script>
       // Function to toggle expansion of photo
       function expandImage(photoId) {
