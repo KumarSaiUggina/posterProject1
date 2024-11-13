@@ -6,23 +6,39 @@
     <style>
       body {
         font-family: Arial, sans-serif;
-        text-align: center;
         margin: 0;
-        padding: 50px;
+        padding: 0;
         background-image: url("../static/peg1.jpg");
-        background-size: cover; /* This will make sure the background image covers the entire body */
-        background-position: center; /* This will center the background image */
-        background-attachment: fixed; /* This will keep the background fixed when scrolling */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8); /* Light background for header */
+      }
+      .header .logo {
+        width: 60px; /* Adjust logo size */
+        height: auto;
+        margin-right: 20px;
+      }
+      .header h1 {
+        font-size: 24px;
+        margin: 0;
+        color: #333;
       }
       .container {
         max-width: 400px;
-        margin: 0 auto;
+        margin: 20px auto;
         background-color: #f6f6fb;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
+        text-align: center;
       }
-      h1 {
+      .container h1 {
         font-size: 24px;
         margin-bottom: 20px;
       }
@@ -63,27 +79,35 @@
         background-color: #f8d7da;
         color: #721c24;
       }
-      .logo {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: 200px; /* You can adjust the width */
-        height: auto;
-        text-decoration: solid;
+      footer {
+        text-align: center;
+        background-color: #f8f9fa;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-size: 14px;
       }
     </style>
   </head>
   <body>
-    <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
-    <center><h1>Data Science Photography Competition !</h1></center>
+    <!-- Header with Logo and Title -->
+    <header class="header">
+      <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
+      <h1>Data Science Photography Competition</h1>
+    </header>
+
     <div class="container">
       <h1>Email Verification</h1>
 
       <!-- Display Flash Messages -->
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if
-      messages %} {% for category, message in messages %}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
       <div class="flash-message {{ category }}">{{ message }}</div>
-      {% endfor %} {% endif %} {% endwith %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
 
       <!-- Email Form -->
       <form action="{{ url_for('verify_email') }}" method="POST">
@@ -96,11 +120,10 @@
         <button type="submit">Verify</button>
       </form>
     </div>
+
     <!-- Footer -->
-    <footer style="text-align: center; background-color: #f8f9fa">
-      <p>
-        Developed by <strong>Mahesh</strong> and <strong>Satheesh</strong> IV DS
-      </p>
+    <footer>
+      <p>Developed by <strong>Mahesh</strong> and <strong>Satheesh</strong> IV DS</p>
     </footer>
   </body>
 </html>
