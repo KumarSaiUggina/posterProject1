@@ -26,7 +26,6 @@
         padding: 10px 20px;
         background-color: white;
         display: flex;
-        justify-content: flex-start;
         align-items: center;
         position: fixed;
         top: 0;
@@ -37,6 +36,8 @@
 
       .logo-container {
         margin-right: 15px;
+        display: flex;
+        align-items: center;
       }
 
       .logo {
@@ -44,15 +45,27 @@
         height: auto;
       }
 
+      .header-text-container {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+      }
+
       .header-text {
         color: black;
-        text-align: left;
-        flex-grow: 1;
+        text-align: center;
       }
 
       h1,
       h2 {
         margin: 0;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h2 {
         font-size: 1.2em;
       }
 
@@ -142,26 +155,19 @@
       /* Responsive styling */
       @media (max-width: 768px) {
         header {
-          flex-direction: row;
-          align-items: center;
-          justify-content: flex-start;
-          text-align: left;
+          padding: 8px 10px;
         }
 
         .logo {
-          width: 90px;
-        }
-
-        .header-text {
-          text-align: left;
+          width: 70px;
         }
 
         h1 {
-          font-size: 1.4em;
+          font-size: 1.2em;
         }
 
         h2 {
-          font-size: 1.1em;
+          font-size: 1em;
         }
 
         .photo-gallery {
@@ -173,6 +179,21 @@
           height: 120px;
         }
       }
+
+      /* Adjustments for mobile view */
+      @media (max-width: 480px) {
+        .logo {
+          width: 60px;
+        }
+
+        h1 {
+          font-size: 1em;
+        }
+
+        h2 {
+          font-size: 0.9em;
+        }
+      }
     </style>
   </head>
   <body>
@@ -180,11 +201,11 @@
       <div class="logo-container">
         <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
       </div>
-      <div class="header-text">
-        <h1><center>Welcome </center>
-          <center>{{ user_name }}!</center>
-        </h1>
-        <h2><center>Vote for Your Favorite Photo</center></h2>
+      <div class="header-text-container">
+        <div class="header-text">
+          <h1>Welcome {{ user_name }}!</h1>
+          <h2>Vote for Your Favorite Photo</h2>
+        </div>
       </div>
     </header>
 
@@ -213,7 +234,7 @@
       </div>
     </div>
 
-     <footer>
+    <footer>
       <p>
         Developed by <strong>Mahesh</strong> and <strong>Sateesh</strong> IV DS
       </p>
