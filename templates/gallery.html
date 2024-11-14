@@ -18,66 +18,63 @@
         margin: 0;
         padding: 0;
         min-height: 100vh;
-        color: #333;
       }
 
       /* Header Styling */
       header {
         width: 100%;
         padding: 10px 20px;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: white;
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        justify-content: space-between;
         position: fixed;
         top: 0;
+        left: 0;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 1000;
       }
 
       .logo-container {
-        display: flex;
-        align-items: center;
+        margin-right: 15px;
       }
 
       .logo {
-        width: 60px;
+        width: 90px;
         height: auto;
       }
 
       .header-text {
+        color: black;
+        text-align: left;
         flex-grow: 1;
-        text-align: center;
       }
 
-      .header-text h1 {
-        font-size: 1.5em;
+      h1,
+      h2 {
         margin: 0;
-      }
-
-      .header-text h2 {
-        font-size: 1em;
-        margin: 0;
-        color: #666;
+        font-size: 1.2em;
       }
 
       /* Content Styling */
       .content {
-        margin-top: 120px;
+        margin-top: 100px;
         text-align: center;
-        width: 100%;
-        padding: 20px;
+        flex-grow: 1;
+        padding-bottom: 60px; /* Space to keep content above footer */
       }
 
       .photo-gallery {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
+        gap: 15px;
+        margin-top: 20px;
       }
 
       .photo-item {
         position: relative;
+        text-align: center;
         cursor: pointer;
         transition: transform 0.3s ease-in-out;
       }
@@ -90,12 +87,11 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
 
-      /* Expanded view */
       .photo-item.expanded img {
         width: auto;
         height: auto;
         max-width: 90vw;
-        max-height: 80vh;
+        max-height: 70vh;
       }
 
       .photo-item p {
@@ -125,7 +121,6 @@
         background-color: #0056b3;
       }
 
-      /* Show vote button when expanded */
       .photo-item.expanded .vote-button {
         display: inline-block;
       }
@@ -134,38 +129,43 @@
       footer {
         width: 100%;
         padding: 20px;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: #f4f4f4;
         font-size: 14px;
         color: #555;
         text-align: center;
         font-weight: bold;
-        position: fixed;
+        position: relative;
         bottom: 0;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
       }
 
       /* Responsive styling */
       @media (max-width: 768px) {
         header {
-          padding: 10px;
-          flex-direction: column;
-          text-align: center;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          text-align: left;
         }
 
         .logo {
-          width: 50px;
+          width: 70px;
         }
 
-        .header-text h1 {
-          font-size: 1.2em;
+        .header-text {
+          text-align: left;
         }
 
-        .header-text h2 {
-          font-size: 1em;
+        h1 {
+          font-size: 1.4em;
+        }
+
+        h2 {
+          font-size: 1.1em;
         }
 
         .photo-gallery {
-          gap: 15px;
+          gap: 10px;
         }
 
         .photo-item img {
@@ -202,14 +202,16 @@
           <form action="{{ url_for('vote') }}" method="POST" class="vote-form">
             <input type="hidden" name="image_id" value="{{ photo._id }}" />
             <input type="hidden" name="email" value="{{ user_email }}" />
-            <button type="submit" class="vote-button">Vote for this Picture</button>
+            <button type="submit" class="vote-button">
+              Vote for this Picture
+            </button>
           </form>
         </div>
         {% endfor %}
       </div>
     </div>
 
-    <footer>
+     <footer>
       <p>
         Developed by <strong>Mahesh</strong> and <strong>Sateesh</strong> IV DS
       </p>
