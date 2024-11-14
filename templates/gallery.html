@@ -6,6 +6,12 @@
     <title>Photo Gallery</title>
     <style>
       /* General styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: Arial, sans-serif;
         background-image: url("../static/inside.jpeg.jpg");
@@ -14,9 +20,6 @@
         background-attachment: fixed;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        margin: 0;
-        padding: 0;
         min-height: 100vh;
       }
 
@@ -27,9 +30,6 @@
         background-color: white;
         display: flex;
         align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 1000;
       }
@@ -56,8 +56,7 @@
         text-align: center;
       }
 
-      h1,
-      h2 {
+      h1, h2 {
         margin: 0;
       }
 
@@ -71,10 +70,9 @@
 
       /* Content Styling */
       .content {
-        margin-top: 100px;
+        flex: 1;
         text-align: center;
-        flex-grow: 1;
-        padding-bottom: 60px; /* Space to keep content above footer */
+        padding: 20px;
       }
 
       .photo-gallery {
@@ -148,8 +146,6 @@
         text-align: center;
         font-weight: bold;
         position: relative;
-        bottom: 0;
-        z-index: 1000;
       }
 
       /* Responsive styling */
