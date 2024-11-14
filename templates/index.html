@@ -39,16 +39,16 @@
 
       /* Container styling */
       .container {
-        max-width: 400px;
-        margin: 60px auto 20px;
+        max-width: 350px;
+        margin: 40px auto;
         background-color: rgba(255, 255, 255, 0.95);
-        padding: 30px;
+        padding: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         text-align: center;
       }
       .container h1 {
-        font-size: 26px;
+        font-size: 24px;
         color: #444;
         margin-bottom: 15px;
       }
@@ -62,7 +62,7 @@
       }
       input[type="email"] {
         width: 100%;
-        padding: 12px;
+        padding: 10px;
         margin: 8px 0;
         border: 1px solid #ccc;
         border-radius: 6px;
@@ -75,7 +75,7 @@
       }
       button {
         width: 100%;
-        padding: 12px;
+        padding: 10px;
         background-color: #007bff;
         color: white;
         border: none;
@@ -124,7 +124,7 @@
         border-top: 1px solid #ddd;
       }
 
-      /* Responsive adjustments */
+      /* Responsive adjustments for smaller screens */
       @media (max-width: 600px) {
         .header {
           padding: 15px;
@@ -133,14 +133,16 @@
           font-size: 20px;
         }
         .container {
-          width: 90%;
-          padding: 20px;
+          max-width: 90%;
+          padding: 15px;
+          margin: 20px auto;
         }
         .container h1 {
-          font-size: 22px;
+          font-size: 20px;
         }
         input[type="email"], button {
           font-size: 14px;
+          padding: 8px;
         }
         footer {
           font-size: 12px;
