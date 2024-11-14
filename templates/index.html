@@ -3,190 +3,259 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Verification</title>
+    <title>Photo Gallery</title>
     <style>
-      /* General body styling */
+      /* General styling */
       body {
         font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #333;
-        background-image: url("../static/peg1.jpg");
+        background-image: url("../static/inside.jpeg.jpg");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-      }
-
-      /* Header styling */
-      .header {
-        display: flex;
-        align-items: center;
-        padding: 20px 40px;
-        background-color: rgba(255, 255, 255, 0.9);
-        border-bottom: 1px solid #ddd;
-      }
-      .header .logo {
-        width: 50px;
-        height: auto;
-        margin-right: 15px;
-      }
-      .header h1 {
-        font-size: 24px;
-        margin: 0;
-        font-weight: bold;
-        color: #333;
-      }
-
-      /* Container styling */
-      .container {
-        max-width: 350px;
-        margin: 40px auto;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        text-align: center;
-      }
-      .container h1 {
-        font-size: 24px;
-        color: #444;
-        margin-bottom: 15px;
-      }
-
-      /* Form styling */
-      form {
         display: flex;
         flex-direction: column;
-        gap: 15px;
         align-items: center;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
       }
-      input[type="email"] {
+
+      /* Header Styling */
+      header {
         width: 100%;
-        padding: 10px;
-        margin: 8px 0;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 16px;
-        transition: border-color 0.3s;
+        padding: 10px 20px;
+        background-color: white;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
       }
-      input[type="email"]:focus {
-        border-color: #007bff;
-        outline: none;
+
+      .logo-container {
+        margin-right: 15px;
       }
-      button {
-        width: 100%;
-        padding: 10px;
+
+      .logo {
+        width: 90px;
+        height: auto;
+      }
+
+      .header-text {
+        color: black;
+        text-align: left;
+        flex-grow: 1;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+
+      /* Content Styling */
+      .content {
+        margin-top: 100px;
+        text-align: center;
+        flex-grow: 1;
+        padding-bottom: 60px; /* Space to keep content above footer */
+      }
+
+      .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .photo-item {
+        position: relative;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .photo-item img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .photo-item.expanded img {
+        width: auto;
+        height: auto;
+        max-width: 90vw;
+        max-height: 70vh;
+      }
+
+      .photo-item p {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      .vote-button {
+        display: none;
+        margin-top: 10px;
+        padding: 8px 16px;
         background-color: #007bff;
         color: white;
         border: none;
-        border-radius: 6px;
+        border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
-        transition: background-color 0.3s;
       }
-      button:hover {
+
+      .vote-button:hover {
         background-color: #0056b3;
       }
 
-      /* Flash message styling */
-      .flash-message {
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 6px;
-        font-size: 14px;
-        text-align: left;
-      }
-      .flash-message.success {
-        background-color: #d4edda;
-        color: #155724;
-        border-left: 5px solid #28a745;
-      }
-      .flash-message.warning {
-        background-color: #fff3cd;
-        color: #856404;
-        border-left: 5px solid #ffc107;
-      }
-      .flash-message.error {
-        background-color: #f8d7da;
-        color: #721c24;
-        border-left: 5px solid #dc3545;
+      .photo-item.expanded .vote-button {
+        display: inline-block;
       }
 
       /* Footer styling */
       footer {
-        text-align: center;
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 15px 20px;
-        position: fixed;
-        bottom: 0;
         width: 100%;
+        padding: 20px;
+        background-color: #f4f4f4;
         font-size: 14px;
-        border-top: 1px solid #ddd;
+        color: #555;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        bottom: 0;
+        z-index: 1000;
       }
 
-      /* Responsive adjustments for smaller screens */
-      @media (max-width: 600px) {
-        .header {
-          padding: 15px;
+      /* Responsive styling */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          text-align: left;
         }
-        .header h1 {
-          font-size: 20px;
+
+        .logo {
+          width: 70px;
         }
-        .container {
-          max-width: 90%;
-          padding: 15px;
-          margin: 20px auto;
+
+        .header-text {
+          text-align: left;
         }
-        .container h1 {
-          font-size: 20px;
+
+        h1 {
+          font-size: 1.2em;
         }
-        input[type="email"], button {
-          font-size: 14px;
-          padding: 8px;
+
+        h2 {
+          font-size: 1em;
         }
-        footer {
-          font-size: 12px;
+
+        .photo-gallery {
+          gap: 10px;
+        }
+
+        .photo-item img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      /* Adjustments for mobile view: place header text beside the logo */
+      @media (max-width: 480px) {
+        header {
+          flex-direction: row;
+        }
+
+        .logo-container,
+        .header-text {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo {
+          width: 60px;
+          margin-right: 10px;
+        }
+
+        h1 {
+          font-size: 1em;
+        }
+
+        h2 {
+          font-size: 0.9em;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Header with Logo and Title -->
-    <header class="header">
-      <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
-      <h1><center>Data Science </center> 
-        Photography Competition</h1>
+    <header>
+      <div class="logo-container">
+        <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
+      </div>
+      <div class="header-text">
+        <h1>Welcome {{ user_name }}!</h1>
+        <h2>Vote for Your Favorite Photo</h2>
+      </div>
     </header>
 
-    <div class="container">
-      <h1>Email Verification</h1>
-
-      <!-- Display Flash Messages -->
-      {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-      {% for category, message in messages %}
-      <div class="flash-message {{ category }}">{{ message }}</div>
-      {% endfor %}
-      {% endif %}
-      {% endwith %}
-
-      <!-- Email Form -->
-      <form action="{{ url_for('verify_email') }}" method="POST">
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        />
-        <button type="submit">Verify</button>
-      </form>
+    <div class="content">
+      <div class="photo-gallery">
+        {% for photo in photos %}
+        <div
+          class="photo-item"
+          id="photo-{{ photo._id }}"
+          onclick="expandImage('{{ photo._id }}')"
+        >
+          <p>Photo Number: {{ photo.image_number }}</p>
+          <img
+            src="data:image/jpeg;base64,{{ photo.image }}"
+            alt="Photo {{ photo.image_number }}"
+          />
+          <form action="{{ url_for('vote') }}" method="POST" class="vote-form">
+            <input type="hidden" name="image_id" value="{{ photo._id }}" />
+            <input type="hidden" name="email" value="{{ user_email }}" />
+            <button type="submit" class="vote-button">
+              Vote for this Picture
+            </button>
+          </form>
+        </div>
+        {% endfor %}
+      </div>
     </div>
 
-    <!-- Footer -->
     <footer>
       <p>
         Developed by <strong>Mahesh</strong> and <strong>Sateesh</strong> IV DS
       </p>
     </footer>
+
+    <script>
+      // Function to toggle expansion of photo
+      function expandImage(photoId) {
+        const photoItem = document.getElementById(`photo-${photoId}`);
+        photoItem.classList.toggle("expanded");
+      }
+    </script>
   </body>
 </html>
