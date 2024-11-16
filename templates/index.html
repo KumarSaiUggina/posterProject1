@@ -145,7 +145,8 @@
         .container h1 {
           font-size: 20px;
         }
-        input[type="email"], button {
+        input[type="email"],
+        button {
           font-size: 14px;
           padding: 8px;
         }
@@ -159,21 +160,20 @@
     <!-- Header with Logo and Title -->
     <header class="header">
       <img src="../static/logo_transparent.png" alt="Logo" class="logo" />
-      <h1><center>Data Science </center>
-        Photography Competition</h1>
+      <h1>
+        <center>Data Science</center>
+        Pixel Perfect
+      </h1>
     </header>
 
     <div class="container">
       <h1>Email Verification</h1>
 
       <!-- Display Flash Messages -->
-      {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-      {% for category, message in messages %}
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
       <div class="flash-message {{ category }}">{{ message }}</div>
-      {% endfor %}
-      {% endif %}
-      {% endwith %}
+      {% endfor %} {% endif %} {% endwith %}
 
       <!-- Email Form -->
       <form action="{{ url_for('verify_email') }}" method="POST">
