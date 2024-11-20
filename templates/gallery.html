@@ -14,10 +14,7 @@
 
       body {
         font-family: Arial, sans-serif;
-        background-image: url("../static/inside.jpeg.jpg");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
+       background-color: #78B3CE;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -61,12 +58,12 @@
         margin: 0;
       }
 
-      h1 {
-        font-size: 1.5em;
+      .header-text h1 {
+        font-size: 20px;
       }
-
-      h2 {
-        font-size: 1.2em;
+      .header-text h2 {
+        font-size: 30px;
+        color: #FF2929;
       }
 
       /* Content Styling */
@@ -81,7 +78,7 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
-        margin-top: 20px;
+        margin-top: 8px;
       }
 
       .photo-item {
@@ -104,6 +101,7 @@
         height: auto;
         max-width: 90vw;
         max-height: 70vh;
+
       }
 
       .photo-item p {
@@ -112,6 +110,7 @@
         left: 5px;
         background-color: rgba(0, 0, 0, 0.6);
         color: white;
+        opacity: 0.55;
         padding: 3px 8px;
         border-radius: 4px;
         font-size: 14px;
@@ -121,7 +120,7 @@
         display: none;
         margin-top: 10px;
         padding: 8px 16px;
-        background-color: #007bff;
+        background-color: #F96E2A;
         color: white;
         border: none;
         border-radius: 5px;
@@ -140,12 +139,12 @@
         /* Footer styling */
       footer {
         width: 100%;
-        padding: 20px;
-        background-color: #f4f4f4;
-        font-size: 14px;
-        color: #555;
+        padding: 15px;
+        background-color: #F96E2A;
+        font-size: 11px;
+        color: #FBF8EF;
         text-align: center;
-        font-weight: bold;
+        
         position: relative;
       }
 
@@ -181,14 +180,35 @@
       @media (max-width: 480px) {
         .logo {
           width: 80px;
+          margin-right: -10px;
         }
 
-        h1 {
-          font-size: large;
+        
+       
+        .header-text {
+          margin-left: -15px;
+        }
+        .header-text h1 {
+          font-size: 15px;
+        }
+        .header-text h2 {
+          font-size: 19px;
+          color: #FF2929;
         }
 
-        h2 {
-          font-size: medium;
+        .photo-item img {
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+  
+        .photo-item.expanded img {
+          width: auto;
+          height: auto;
+          max-width: 90vw;
+          max-height: 70vh;
         }
       }
     </style>
